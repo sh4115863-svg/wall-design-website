@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentPage = window.location.pathname.split("/").pop();
   
     document.querySelectorAll('.nav-item').forEach(link => {
-      // חילוץ שם הדף מתוך ה-href של הקישור (למשל Living_room.html מתוך ./index.html/Living_room.html)
+      // חילוץ שם הדף מתוך ה-href של הקישור (למשל Living_room.html מתוך ./index/Living_room.html)
       const linkHref = link.getAttribute('href');
       const linkPage = linkHref.split("/").pop();
   

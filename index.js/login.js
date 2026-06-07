@@ -7,7 +7,7 @@
 // function f_click() {
 
 //     localStorage.setItem("name", myName.value)
-//     window.location = "../index1.html"
+//     window.location = "../index.html"
 // }
 
 // function f_blur() {
@@ -49,7 +49,7 @@ function f_click() {
         // אם הסיסמא נכונה, נעבור לדף הבית
         if (savedPassword === password.value) {
             localStorage.setItem("name", myName.value); // נשמור את השם ב-localStorage
-            window.location.href = "../index1.html";  // העבר לדף הבית
+            window.location.href = "../index.html";  // העבר לדף הבית
         } else {
             // אם הסיסמא לא נכונה, הצג הודעת שגיאה
             alert("הסיסמא שגויה! נסה שוב.");
@@ -58,6 +58,6 @@ function f_click() {
         // אם השם לא קיים ב-localStorage, נשמור אותו עם הסיסמא
         localStorage.setItem(myName.value, password.value);
         localStorage.setItem("name", myName.value);  // נשמור את השם ב-localStorage
-        window.location.href = "../index1.html";  // העבר לדף הבית
+        window.location.href = "../index.html";  // העבר לדף הבית
     }
 }

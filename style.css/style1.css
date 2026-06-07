@@ -216,7 +216,7 @@ img {
 }
 
 /* ======= גריד קטגוריות ======= */
-.grid-index1 {
+.grid-index {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px;
@@ -225,7 +225,7 @@ img {
   padding: 0 20px;
 }
 
-.grid-index1 > div {
+.grid-index > div {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -235,17 +235,17 @@ img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.grid-index1 > div:hover {
+.grid-index > div:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.grid-index1 > div a {
+.grid-index > div a {
   display: block;
   position: relative;
 }
 
-.grid-index1 > div a img {
+.grid-index > div a img {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -426,11 +426,11 @@ figcaption:hover {
     font-size: 16px;
   }
   
-  .grid-index1 {
+  .grid-index {
     gap: 20px;
   }
   
-  .grid-index1 > div a img {
+  .grid-index > div a img {
     height: 250px;
   }
   
@@ -497,7 +497,7 @@ figcaption:hover {
 
 /* תיקון קטן למצב סמארטפונים קטנים */
 @media (max-width: 400px) {
-  .grid-index1 > div a img {
+  .grid-index > div a img {
     height: 200px;
   }
   

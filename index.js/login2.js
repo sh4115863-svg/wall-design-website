@@ -5,7 +5,7 @@
 
 // function f_click() {
 //     window.history.back()
-//     window.location = "../index1.html"
+//     window.location = "../index.html"
 // }
 
 // function f_clear() {
@@ -26,7 +26,7 @@
 //         userNameDisplay.innerText = storedUsername;
 //     } else {
 //         // אם אין שם ב-localStorage, אפשר להחזיר לדף הלוגין
-//         window.location = "../index1.html"; // שים את הקישור לדף הלוגין שלך
+//         window.location = "../index.html"; // שים את הקישור לדף הלוגין שלך
 //     }
 // };
 
