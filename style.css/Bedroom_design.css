@@ -1,0 +1,410 @@
+body{
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+/* עיצוב הלוגו */
+.header1 h1 {
+  position: fixed; /* מקבע את הלוגו לחלק העליון */
+  text-align: center; /* ממקם את הלוגו במרכז */
+  z-index: 9999; /* עושה את הלוגו מעל כל התוכן בדף */
+  background-color: white; /* צבע רקע כהה לכותרת */
+  width: 100%; /* הלוגו יתפוס את כל רוחב הדף */
+  top: 0; /* ממקם את הלוגו בחלק העליון של הדף */
+  padding: 10px 0; /* ריפוד סביב הלוגו */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+  margin: 0; /* לוודא שאין רווחים נוספים מסביב */
+}
+
+/* עיצוב התמונה של הלוגו */
+.header1 img {
+  border-radius: 50%; /* הופך את הלוגו לעגלגל */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* צל מסביב ללוגו */
+  height: 80px; /* הגדרת גובה קבוע ללוגו */
+  width: 80px; /* הגדרת רוחב קבוע ללוגו */
+  border: 3px solid #fff;/* מסגרת לבנה סביב הלוגו*/
+}
+
+/* הוספת רווח למעלה כדי שהתמונה לא תסתיר את התוכן */
+body {
+  padding-top: 100px; /* רווח שיתווסף מעל התוכן כך שהלוגו לא יסתיר אותו */
+}
+
+/* עיצוב התפריט */
+.nav {
+	background-color: rgb(255, 255, 255);
+	padding: 10px 0;
+	text-align: center;
+	position: fixed;
+	top: 100px;
+	width: 100%;
+	z-index: 1000;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  }
+  
+  .nav-item {
+	color: #000000;
+	text-decoration: none;
+	padding: 8px 12px;
+	font-size: 16px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	position: relative;
+	display: inline-block;
+	margin: 0 5px;
+  }
+  
+  .nav-item:hover {
+	color: rgb(25, 183, 183);
+  }
+  
+  .nav-item::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid rgb(0, 0, 0);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+  }
+  
+  .nav-item:hover::after {
+	opacity: 1;
+  }
+  
+  .nav-item.active {
+	color: rgb(25, 183, 183);
+	font-weight: bold;
+  }
+  
+  .nav-item.active::after {
+	opacity: 1;
+  }
+  
+  .line {
+	width: 100%;
+	height: 1px;
+	background-color: black;
+	margin: 10px 0;
+	flex-basis: 100%;
+  }
+  
+/* עיצוב הגלריה */
+.grid-bedroom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 עמודות */
+  gap: 3%;
+  padding: 0%;
+  max-width: 1300px; /* רוחב מקסימלי */
+  margin: 0 auto; /* ממרכז את הגלריה */
+  margin: 15%;
+}
+
+.grid-bedroom .grid1, .grid-bedroom .grid2, .grid-bedroom .grid3, 
+.grid-bedroom .grid4, .grid-bedroom .grid5, .grid-bedroom .grid6, 
+.grid-bedroom .grid7, .grid-bedroom .grid8, .grid-bedroom .grid9,
+.grid-bedroom .grid10, .grid-bedroom .grid11, .grid-bedroom .grid12,
+.grid-bedroom .grid13, .grid-bedroom .grid14, .grid-bedroom .grid15,
+.grid-bedroom .grid16, .grid-bedroom .grid17, .grid-bedroom .grid18,
+.grid-bedroom .grid19, .grid-bedroom .grid20 {
+  height: 350px; /* גובה קבוע לכל תמונה */
+  overflow: hidden; /* מסתיר את החלקים החורגים מהתיבה */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ממרכז את התמונה בתוך התיבה */
+}
+
+.grid-bedroom img {
+  width: 100%; /* תמונה תתאים לרוחב התיבה */
+  height: 100%; /* תמונה תתאים לגובה התיבה */
+  object-fit: cover; /* מתאימה את התמונה לתיבה מבלי לעוות אותה */
+  border-radius: 5%; /* פינות מעוגלות */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל מסביב לכל תמונה */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* אפקט שינוי תצוגה */
+}
+
+.grid-bedroom img:hover {
+  transform: scale(1.05); /* הגדלת התמונה ב-5% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* הצללה חזקה יותר */
+}
+
+/* עיצוב רספונסיבי */
+@media (max-width: 768px) {
+  .grid-bedroom {
+    grid-template-columns: repeat(2, 1fr); /* 2 עמודות בטאבלט */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-bedroom {
+    grid-template-columns: 1fr; /* עמודה אחת במובייל */
+  }
+}
+
+
+/* הגדרת הסרטון כרקע */
+.background-video {
+  position: fixed;  /* הסרטון יהיה קבוע מאחורי הדף */
+  top: 0;
+  left: 0;
+  width: 100%;  /* יתפוס את כל רוחב הדף */
+  height: 100%; /* יתפוס את כל גובה הדף */
+  object-fit: cover; /* הסרטון יכסה את כל הרקע ויתפוס את כל המסך */
+  z-index: -1; /* מבטיח שהסרטון יהיה מאחורי כל שאר האלמנטים */
+}
+
+.example {
+  padding: 6%;/*רווח מלמעלה*/
+  text-align: center;
+  background-color: #ffffff;
+  
+}
+
+.image-example {
+  display: flex;
+  justify-content: space-between;
+  gap: 8%;
+}
+
+.image-example img {
+  width: 27%;
+  border-radius: 10px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  border: 4px solid rgb(4, 4, 4); 
+}
+
+.image-example img:hover {
+  transform: scale(1.05);
+}
+p:hover{
+  size: 5%;
+  color: teal;
+}
+
+.down {
+  font-size: 200%;
+  font-weight: bold;
+  text-align: center;
+  color: #fff; /* צבע טקסט לבן */
+  background-color: teal; /* רקע כתום חמים */
+  padding: 5% 40%;
+  border-radius: 0%; /* פינות מעוגלות */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* צללים סביב הטקסט */
+  cursor: pointer;
+  position: relative;/*החץ תמיד ישאר*/
+  transition: all 0.3s ease-in-out; /* אפקט מעבר חלק */
+  margin-top: 5%;
+  display: inline-block; /* הצגת אלמנט כבלוק */
+}
+
+.down:hover {
+  background-color: #62a3b1; /* שינוי צבע בריחוף */
+  transform: translateY(-5px); /* זוזה קטנה כלפי מעלה */
+  color: white;
+}
+
+.down::after {
+  content: "↓"; /* חץ למטה */
+  font-size: 2em;
+  color: rgb(5, 5, 5);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 1.5s infinite ease-in-out;/*החץ עולה ויורד*/
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+p{
+  color: azure;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 160%;
+  background-color:black; 
+}
+
+.Search, .Search2 {
+  color: azure;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 100%; /* במקום 120% */
+  background-color: black;
+  margin: 3px 0;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.1em; /* כתב מעט גדול יותר */
+  width: 100%;
+}
+
+footer p {
+  margin: 0;         /* ביטול רווח בין שורות */
+  line-height: 1.4;  /* ריווח פנימי בין שורות */
+}
+
+
+
+
+/********************/
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #fff;
+}
+
+.close-button {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10000;
+}
+/*************כפתור המבורגר**************/
+.menu-toggle {
+  display: none;
+  background-color: teal;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin: auto;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px 0;
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+/********************************************************/
+
+/* מדיה – מובייל */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+/* מסכים גדולים במיוחד */
+@media (min-width: 1600px) {
+  .nav-item {
+    font-size: 22px;
+    padding: 10px 20px;
+  }
+}
+
+/* מסכים קטנים במיוחד (כמו אייפון SE) */
+@media (max-width: 400px) {
+  .nav-item {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    font-size: 26px;
+  }
+}
+/* 
+
+@media(max-width: 1024px){
+  .nav{
+    top: 12%;
+
+  }
+  .down{
+    margin-top: 12%;
+  }
+}
+
+@media(max-width: 768px){
+  .nav{
+    top: 12%;
+   
+  }
+  .down{
+    margin-top: 12%;
+  }
+}
+@media(max-width: 425px){
+  
+  }
+  .down{
+    margin-top: 23%;
+  }
+  @media(max-width: 320px){
+  
+  }
+  .down{
+    margin-top: 34%;
+  }
+ */
+

@@ -1,0 +1,420 @@
+/* 
+ * עיצוב רספונסיבי לאתר תוך שמירה על העיצוב המקורי
+ * התפריט נשאר אופקי בכל גדלי המסך
+ */
+
+ *{
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  direction: rtl;
+}
+
+/* עיצוב טבלה וגיבוש*/
+.table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 עמודות */
+  gap: 4%; /* רווחים בין התמונות */
+  padding: 20px;
+  margin-top: 10px; /* ריווח מלמעלה אחרי הסרטון */
+  z-index: 0; /* הגריד יהיה מתחת לסרטון */
+  margin-bottom: 150px; /* מרווח מהתמונות של הגריד עד למקטע 'לפני/אחרי' - הוגדל */
+}
+
+.table img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* שומר על פרופורציות התמונה */
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;/*הגדלה בצורה חלקה של התמונה כאשר עוברים עליה*/
+  border: 2px solid black; 
+}
+
+/* אפקטים על התמונה כשעוברים עליה */
+.table img:hover {
+  transform: scale(1.1); /* הגדלת התמונה */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* הוספת צל */
+}
+
+/* תיקון גודל הטבלה והתמונות בהתאם למידות המסך */
+@media (max-width: 1200px) {
+  .table {
+    grid-template-columns: repeat(4, 1fr); /* 4 עמודות */
+  }
+}
+
+@media (max-width: 900px) {
+  .table {
+    grid-template-columns: repeat(3, 1fr); /* 3 עמודות */
+  }
+}
+
+@media (max-width: 600px) {
+  .table {
+    grid-template-columns: repeat(2, 1fr); /* 2 עמודות */
+    gap: 3%;
+  }
+}
+
+@media (max-width: 400px) {
+  .table {
+    grid-template-columns: repeat(2, 1fr); /* 2 עמודות באופן קבוע */
+    gap: 2%;
+  }
+}
+
+/*עיצוב הוידאו  */
+.background-video {
+  top: 0; /* מתחיל מהחלק העליון של הדף */
+  left: 50%; /* מתחיל מהחלק השמאלי של הדף */
+  width: 90%; /* הסרטון יתפוס את כל רוחב הדף */
+  height: 100%; /* הסרטון יתפוס את כל הגובה של הדף */
+  object-fit: cover; /* שומר על יחס הגובה/רוחב של הסרטון וממלא את כל המסך */
+  z-index: -1; /* מוודא שהסרטון יישאר מאחורי כל שאר התוכן */
+  margin: 0 auto;
+  display: block;
+}
+
+/* עיצוב הלוגו */
+.header1 h1 {
+  position: fixed; /* מקבע את הלוגו לחלק העליון */
+  text-align: center; /* ממקם את הלוגו במרכז */
+  z-index: 9999; /* עושה את הלוגו מעל כל התוכן בדף */
+  background-color: white; /* צבע רקע כהה לכותרת */
+  width: 100%; /* הלוגו יתפוס את כל רוחב הדף */
+  top: 0; /* ממקם את הלוגו בחלק העליון של הדף */
+  padding: 10px 0; /* ריפוד סביב הלוגו */
+  margin: 0; /* לוודא שאין רווחים נוספים מסביב */
+}
+
+/* עיצוב התמונה של הלוגו */
+.header1 img {
+  border-radius: 50%; /* הופך את הלוגו לעגלגל */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* צל מסביב ללוגו */
+  height: 80px; /* הגדרת גובה קבוע ללוגו */
+  width: 80px; /* הגדרת רוחב קבוע ללוגו */
+  border: 3px solid #fff; /* מסגרת לבנה סביב הלוגו */
+}
+
+/* הוספת רווח למעלה כדי שהתמונה לא תסתיר את התוכן */
+body {
+  padding-top: 100px; /* רווח שיתווסף מעל התוכן כך שהלוגו לא יסתיר אותו */
+}
+
+/* עיצוב התפריט - הותאם לרספונסיביות בלי תפריט המבורגר */
+.nav {
+  background-color: rgb(255, 255, 255);
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-item {
+  color: #000000;
+  text-decoration: none;
+  padding: 8px 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  margin: 0 3px;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: rgb(25, 183, 183);
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgb(0, 0, 0);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item:hover::after {
+  opacity: 1;
+}
+
+.nav-item.active {
+  color: rgb(25, 183, 183);
+  font-weight: bold;
+}
+
+.nav-item.active::after {
+  opacity: 1;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 10px 0;
+  flex-basis: 100%;
+}
+
+/* עיצוב הקו השחור */
+.line {
+  width: 100%; /* קו יתפוס את כל רוחב הדף */
+  height: 1px; /* גובה הקו */
+  background-color: black; /* צבע הקו */
+  margin: 10px 0; /* רווח מעל ומתחת לקו */
+}
+
+/* התאמות רספונסיביות לתפריט - שמירה על תפריט אופקי */
+@media (max-width: 1024px) {
+  .nav-item {
+    font-size: 14px;
+    padding: 8px 7px;
+    margin: 0 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    font-size: 13px;
+    padding: 6px 5px;
+    margin: 0 1px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-item {
+    font-size: 11px;
+    padding: 5px 3px;
+    margin: 0 1px;
+  }
+}
+
+@media (max-width: 425px) {
+  .nav-item {
+    font-size: 9px;
+    padding: 4px 2px;
+    margin: 0;
+  }
+}
+
+.Ccolor{
+  background-color: rgb(133, 90, 71);
+  height: 100%;
+  color: azure;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.color{
+  background-color: rgb(161, 156, 156);
+  height: 520%;
+  color: sienna;
+}
+
+p{
+  color: azure;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 160%;
+  background-color:black; 
+}
+
+.Search, .Search2 {
+  color: azure;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 100%; /* במקום 120% */
+  background-color: black;
+  margin: 3px 0;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.1em; /* כתב מעט גדול יותר */
+  width: 100%;
+}
+
+footer p {
+  margin: 0;         /* ביטול רווח בין שורות */
+  line-height: 1.4;  /* ריווח פנימי בין שורות */
+}
+
+/*******************/
+
+body {
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  padding-top: 175px; /* רווח גדול יותר כדי להתאים לתפריט בגרסאות מסך קטן */
+}
+
+/* עיצוב החלק של example - עם שינוי המרווח למעלה */
+.example {
+  margin-top: 350px; /* מרווח גדול יותר מעל המקטע - הוגדל משמעותית */
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(43, 30, 25);
+  font-size: 130%;
+  font-weight: bold;
+  text-shadow: 
+        2px 2px 5px rgba(65, 62, 62, 0.3),  /* צל כהה */
+        0 0 10px #f76060,   /* זוהר אדום */
+        0 0 20px #d0e60d,   /* זוהר אדום נוסף */
+        0 0 30px #08dee6;   /* זוהר אדום נוסף */
+}
+
+.image-two {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 0%;
+  margin-top: 5%;
+  margin-bottom: 150px; /* מרווח גדול יותר בתחתית המקטע */
+}
+
+.image-set {
+  position: relative;
+  text-align: center;
+}
+
+.image-set img {
+  width: 70%;   /* הגדרת רוחב אחיד */
+  height: 70%;   /* הגדרת גובה אחיד */
+  object-fit: cover;  /* אם רוצים שההתמונה תמלא את הגודל בלי להשתרע */
+}
+
+.before-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid rgba(114, 217, 185, 0.5); /* גבול בצבע כחול עם שקיפות */
+  border-radius: 15px; /* מסגרת מעוגלת */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* רקע שקוף עם מעט צבע */
+  box-shadow: 0 0 10px rgba(100, 234, 207, 0.8); /* אפקט זוהר כחול מסביב למסגרת */
+  transition: all 0.3s ease; /* אנימציה חלקה לשינוי */
+}
+
+/* אפשרות להוסיף אנימציה כאשר הסמן מעל */
+.before-image:hover {
+  box-shadow: 0 0 25px rgb(1, 121, 85); /* זוהר חזק יותר כאשר הסמן מעל */
+  border-color: rgba(9, 159, 126, 0.8); /* חיזוק הצבע של המסגרת */
+}
+
+.after-image {
+  display: none;
+  width: 100%;
+  height: auto;
+  border: 3px solid rgba(114, 217, 185, 0.5); /* גבול בצבע כחול עם שקיפות */
+  border-radius: 15px; /* מסגרת מעוגלת */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* רקע שקוף עם מעט צבע */
+  box-shadow: 0 0 10px rgba(100, 234, 207, 0.8); /* אפקט זוהר כחול מסביב למסגרת */
+  transition: all 0.3s ease; /* אנימציה חלקה לשינוי */ 
+}
+
+.buttons {
+  margin-top: 1%;
+}
+
+button {
+  padding: 2% 5%;
+  font-size: 106%;
+  cursor: pointer;
+  background-color: rgb(4, 102, 92);
+  box-shadow: 0 0 10px rgba(100, 234, 207, 0.8); /* אפקט זוהר כחול מסביב למסגרת */
+  color: white;
+  border: none;
+  border-radius: 5%;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0ef0d6;
+}
+
+/* התאמות רספונסיביות חלק השוואת תמונות */
+@media (max-width: 1440px) {
+  .image-set {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .image-two {
+    gap: 20px;
+  }
+  
+  .image-set {
+    max-width: 45%;
+  }
+  
+  /* התאמת המרווח של החלק example במסכים בינוניים */
+  .example {
+    margin-top: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-set {
+    max-width: 47%;
+  }
+  
+  .example {
+    font-size: 120%;
+    margin-top: 250px; /* התאמת מרווח למסכים קטנים יותר */
+  }
+  
+  button {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .image-two {
+    gap: 10px;
+  }
+  
+  .image-set {
+    max-width: 48%;
+  }
+  
+  .example {
+    font-size: 110%;
+    margin-top: 200px; /* התאמת מרווח למסכים קטנים מאוד */
+  }
+  
+  button {
+    font-size: 90%;
+    padding: 6px 10px;
+  }
+}
+
+/* חוצץ וירטואלי - חלופה להוספת תגי <br> רבים */
+.spacer {
+  height: 150px; /* גובה החוצץ */
+  width: 100%;
+  display: block;
+  clear: both;
+}

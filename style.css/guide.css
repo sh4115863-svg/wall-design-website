@@ -1,0 +1,169 @@
+ body{
+    text-align: center;
+}
+
+  /* בסיסי - הגדרות כלליות */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, .title {
+  color: #2c3e50;
+  font-size: 28px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+h1 {
+  font-size: 36px;
+  color: #34495e;
+}
+
+/* עיצוב הכותרות וכתיבת הטקסט */
+.makav {
+  background-color: #ecf0f1;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.colors {
+  font-weight: bold;
+  color: #024b7b;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0;
+  padding: 0 20px;
+}
+
+/* עיצוב תמונות */
+img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* עיצוב אזור המדריך (section) */
+#livingroomm, #bedroom, #kitchen, #children, #toilet {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#livingroomm {
+  background-color: #eaf2f8;
+}
+#bedroom {
+  background-color: #f9ebf9;
+}
+#kitchen {
+  background-color: #fef8e6;
+}
+#children {
+  background-color: #e6f9f7;
+}
+#toilet {
+  background-color: #f0f0f0;
+}
+header {
+  position: sticky;
+  height: 5%;
+  width: 100%;
+  margin-top: 13%;
+  background-color: whitesmoke; /* רקע כהה לתפריט */
+  padding: 8px 0;
+  margin-top: 0%;
+  top: 0%;
+  z-index: 1;
+}
+
+.nav {
+  display: flex;
+  justify-content: center; /* מרכז את התפריט */
+  align-items: center;
+  gap: 30px; /* מרווח בין הקישורים */
+}
+
+.nav-item {
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold; /* הגברת בהירות הטקסט */
+  text-transform: uppercase; /* כל הקישורים באותיות גדולות */
+  padding: 12px 20px;
+  border-radius: 4px; /* קצוות מעוגלים */
+  transition: all 0.3s ease; /* מעבר חלק בין מצבים */
+}
+
+/* אפקט hover */
+.nav-item:hover {
+  background-color: cadetblue; /* צבע רקע חדש בעת ריחוף */
+  color: whitesmoke; /* צבע טקסט לבן */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* הצללה בזמן ריחוף */
+  transform: scale(1.1); /* הגדלה קלה בעת ריחוף */
+}
+.pictures {
+  --s: 130px; /* control the size of the images*/
+ 
+  display: grid;
+  gap: 5px;
+  position: relative;
+}
+.pictures input {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  inset: calc(50% - var(--s)/3);
+  cursor: pointer;
+  --g: linear-gradient(#fff 0 0) no-repeat;
+  background: var(--g) 50%/60% 3px,var(--g) 50%/3px 60%,#222;
+  transition: 1.5s;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.pictures > img {/*gallery  שנמצאים ישירות בתוך בתוך אלמנט עם הקלאס  <img> בוחר את כל האלמנטים  img */
+  width: var(--s);
+  aspect-ratio: 1;
+  grid-area: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: scale(.5);/*גורם לתמונה להיות בקנה מידה של 50% מהגודל המקורי*/
+  transition: 1s calc((var(--i) - 1)*.1s);/*הגדרת מעבר של 1 שניה עם עיכוב משתנה לכל תמונה*/
+}
+.pictures > img:nth-of-type(1) {--i:1;}
+.pictures > img:nth-of-type(2) {--i:2;}
+.pictures > img:nth-of-type(3) {--i:3;}
+.pictures > img:nth-of-type(4) {--i:4;}
+.pictures > img:nth-of-type(5) {--i:5;}
+.pictures > img:nth-of-type(6) {--i:6;}
+.pictures > img:nth-of-type(7) {--i:7;}
+.pictures > img:nth-of-type(8) {--i:8;}
+.pictures > img:nth-of-type(9) {--i:9;}
+
+.pictures > input:checked ~ img {/*באותו הורה input-מאפשר לבחור אלמנט שהוא ילד ישיר של אלמנט אחר כשהם אחים של ה  */
+  transform:
+    rotate(calc(var(--i)* 360deg/8)) translate(calc(1.5*var(--s)))
+    rotate(calc(var(--i)*-360deg/8));/*מחשב את זווית הסיבוב עבור כל תמונה  ומחלק את המעגל ל-8 חלקים שווים,*/
+}
+.pictures > input:checked {/*מאפשר לבחור אלמנט שהוא ילד ישיר של אלמנט אחר*/
+  transform: rotate(135deg)
+}
+
+h3{
+  color:rgb(243, 14, 14);
+  text-shadow: 0 0 10px rgba(228, 5, 27, 0.7); /* זוהר */
+  font-size: 130%;
+  font-family: Arial, Helvetica, sans-serif;
+}
